@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 	"runtime"
 	"strings"
 	"sync"
@@ -65,10 +66,10 @@ func getRecordSets() {
 	req = edgegrid.AddRequestHeader(config, req)
 
 	edgedns.Config = edgegrid.Config{
-		Host:         "akab-pvi2kxobnjna6cf2-7to2refrsunbzavl.luna.akamaiapis.net",
-		AccessToken:  "akab-ea7bv2een2syz5cc-yxhc2vd4e4dmykcx",
-		ClientToken:  "akab-gepihiqucit4p2ls-7l4vpvu2mrbgtiky",
-		ClientSecret: "WULnDE9zAFsOunIgSIDdUn10C7Tuwom9P8Q04/ovjp0=",
+		Host:         os.Getenv("AKAMAI_HOST"),
+		AccessToken:  os.Getenv("AKAMAI_ACCESS_TOKEN"),
+		ClientToken:  os.Getenv("AKAMAI_CLIENT_TOKEN"),
+		ClientSecret: os.Getenv("AKAMAI_CLIENT_SECRET"),
 	}
 	zones, _ := edgedns.ListZones()
 	fmt.Printf("abir \n\n %s", zones)
