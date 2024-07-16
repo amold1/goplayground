@@ -18,6 +18,7 @@ func setUpEdgeRCConfig() *edgegrid.Config {
 		AccessToken:  os.Getenv("AKAMAI_ACCESS_TOKEN"),
 		ClientToken:  os.Getenv("AKAMAI_CLIENT_TOKEN"),
 		ClientSecret: os.Getenv("AKAMAI_CLIENT_SECRET"),
+		MaxBody:      131072,
 	}
 }
 
