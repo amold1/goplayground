@@ -12,7 +12,10 @@ type Cluster struct {
 	IPList []string `json:"ipList"`
 }
 
-var allClusters []Cluster
+var (
+	allClusters []Cluster
+	foundData   = false
+)
 
 func fileIO(data Cluster) {
 	byteValue, _ := os.ReadFile("log.json")
@@ -21,7 +24,6 @@ func fileIO(data Cluster) {
 			fmt.Println(err.Error())
 		}
 	}
-	foundData := false
 	for index, cluster := range allClusters {
 		if cluster.Name == data.Name {
 			foundData = true
